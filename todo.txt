@@ -1,0 +1,5 @@
+Mahjong tool
+v1.1.0
+
+update:创造了interface类基础，使其可以方便地根据系统展示合适的界面
+todo: 更改windows系统中因为底层参数不一样导致的界面异常(填入interface.interface.exec_Windows()）
