@@ -1,7 +1,7 @@
 import tkinter as tk
 import platform
 from calculation import calculation
-from tkinter import ttk
+
 
 class interface:
     def __init__(self):
@@ -30,6 +30,7 @@ class interface:
         self.label_honba_count = tk.Label(self.root, text="x本场：")
         self.text_honba_count = tk.Text(self.root)
         self.button_calculate = tk.Button(self.root, text="计算", command=self.calculate)
+        font_output = ("Helvetica", 16)
         self.label_output = tk.Label(self.root, text="输入场况")
 
     def click_isDealer_self(self):
@@ -164,11 +165,71 @@ class interface:
         self.text_honba_count.place(x=330, y=150)
         self.button_calculate.place(x=120, y=250)
         self.label_output.place(x=10, y=300)
+
         self.root.mainloop()
 
-    def exec_Windows(self):
-        # todo: add your code here
 
+
+    def exec_Windows(self):
+        self.root.title("Mahjong Tool")
+        self.root.geometry("400x500")
+
+        font = ("simsunb.ttf", 19, "bold")
+
+        self.button_Dealer_self.config(font=font, width=3, height=1)
+        self.button_Dealer_kamicha.config(font=font, width=3, height=1)
+        self.button_Dealer_toimen.config(font=font, width=3, height=1)
+        self.button_Dealer_shimocha.config(font=font, width=3, height=1)
+
+        self.label_self.config(font=font)
+        self.label_kamicha.config(font=font)
+        self.label_toimen.config(font=font)
+        self.label_shimocha.config(font=font)
+
+        self.label_self_00.config(font=font)
+        self.label_kamicha_00.config(font=font)
+        self.label_toimen_00.config(font=font)
+        self.label_shimocha_00.config(font=font)
+
+        self.text_self.config(highlightthickness=1, highlightbackground="black", height=1, width=4, font=font)
+        self.text_kamicha.config(highlightthickness=1, highlightbackground="black", height=1, width=4, font=font)
+        self.text_toimen.config(highlightthickness=1, highlightbackground="black", height=1, width=4, font=font)
+        self.text_shimocha.config(highlightthickness=1, highlightbackground="black", height=1, width=4, font=font)
+
+        self.label_reach_bar_count.config(font=font)
+        self.text_reach_bar_count.config(highlightthickness=1, highlightbackground="black", height=1, width=2,
+                                         font=font)
+        self.label_honba_count.config(font=font)
+        self.text_honba_count.config(highlightthickness=1, highlightbackground="black", height=1, width=2, font=font)
+        self.button_calculate.config(font=font, width=10, height=1)
+        font_output = ("Helvetica", 13)
+        self.label_output.config(background="grey", width=40, height=9, font=font_output)
+
+        self.button_next_return()
+
+        self.button_Dealer_self.place(x=10, y=10)
+        self.button_Dealer_kamicha.place(x=10, y=70)
+        self.button_Dealer_toimen.place(x=10, y=130)
+        self.button_Dealer_shimocha.place(x=10, y=190)
+        self.label_self.place(x=72, y=20)
+        self.label_self_00.place(x=220, y=20)
+        self.label_kamicha.place(x=72, y=80)
+        self.label_kamicha_00.place(x=220, y=80)
+        self.label_toimen.place(x=72, y=140)
+        self.label_toimen_00.place(x=220, y=140)
+        self.label_shimocha.place(x=72, y=200)
+        self.label_shimocha_00.place(x=220, y=200)
+        self.text_self.place(x=155, y=20)
+        self.text_kamicha.place(x=155, y=80)
+        self.text_toimen.place(x=155, y=140)
+        self.text_shimocha.place(x=155, y=200)
+        self.label_reach_bar_count.place(x=255, y=100)
+        self.text_reach_bar_count.place(x=360, y=100)
+        self.label_honba_count.place(x=255, y=150)
+        self.text_honba_count.place(x=360, y=150)
+        self.button_calculate.place(x=120, y=250)
+        self.label_output.place(x=20, y=320)
+        self.root.mainloop()
         pass
 
     def execute(self):
