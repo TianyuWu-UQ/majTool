@@ -35,35 +35,64 @@ class interface:
 
     def click_isDealer_self(self):
         self.isDealer = 0
-        self.button_Dealer_self.config(highlightbackground="red")
-        self.button_Dealer_kamicha.config(highlightbackground="SystemButtonFace")
-        self.button_Dealer_toimen.config(highlightbackground="SystemButtonFace")
-        self.button_Dealer_shimocha.config(highlightbackground="SystemButtonFace")
+        if self.OS == "Windows":
+            self.button_Dealer_self.config(bg="red")
+            self.button_Dealer_kamicha.config(bg="SystemButtonFace")
+            self.button_Dealer_toimen.config(bg="SystemButtonFace")
+            self.button_Dealer_shimocha.config(bg="SystemButtonFace")
+        else:
+
+            self.button_Dealer_self.config(highlightbackground="red")
+            self.button_Dealer_kamicha.config(highlightbackground="SystemButtonFace")
+            self.button_Dealer_toimen.config(highlightbackground="SystemButtonFace")
+            self.button_Dealer_shimocha.config(highlightbackground="SystemButtonFace")
 
     def click_isDealer_kamicha(self):
         self.isDealer = 1
-        self.button_Dealer_self.config(highlightbackground="SystemButtonFace")
-        self.button_Dealer_kamicha.config(highlightbackground="red")
-        self.button_Dealer_toimen.config(highlightbackground="SystemButtonFace")
-        self.button_Dealer_shimocha.config(highlightbackground="SystemButtonFace")
+        if self.OS == "Windows":
+            self.button_Dealer_self.config(bg="SystemButtonFace")
+            self.button_Dealer_kamicha.config(bg="red")
+            self.button_Dealer_toimen.config(bg="SystemButtonFace")
+            self.button_Dealer_shimocha.config(bg="SystemButtonFace")
+        else:
+            self.button_Dealer_self.config(highlightbackground="SystemButtonFace")
+            self.button_Dealer_kamicha.config(highlightbackground="red")
+            self.button_Dealer_toimen.config(highlightbackground="SystemButtonFace")
+            self.button_Dealer_shimocha.config(highlightbackground="SystemButtonFace")
 
     def click_isDealer_toimen(self):
         self.isDealer = 2
-        self.button_Dealer_self.config(highlightbackground="SystemButtonFace")
-        self.button_Dealer_kamicha.config(highlightbackground="SystemButtonFace")
-        self.button_Dealer_toimen.config(highlightbackground="red")
-        self.button_Dealer_shimocha.config(highlightbackground="SystemButtonFace")
+        if self.OS == "Windows":
+            self.button_Dealer_self.config(bg="SystemButtonFace")
+            self.button_Dealer_kamicha.config(bg="SystemButtonFace")
+            self.button_Dealer_toimen.config(bg="red")
+            self.button_Dealer_shimocha.config(bg="SystemButtonFace")
+        else:
+            self.button_Dealer_self.config(highlightbackground="SystemButtonFace")
+            self.button_Dealer_kamicha.config(highlightbackground="SystemButtonFace")
+            self.button_Dealer_toimen.config(highlightbackground="red")
+            self.button_Dealer_shimocha.config(highlightbackground="SystemButtonFace")
 
     def click_isDealer_shimocha(self):
         self.isDealer = 3
-        self.button_Dealer_self.config(highlightbackground="SystemButtonFace")
-        self.button_Dealer_kamicha.config(highlightbackground="SystemButtonFace")
-        self.button_Dealer_toimen.config(highlightbackground="SystemButtonFace")
-        self.button_Dealer_shimocha.config(highlightbackground="red")
+        if self.OS == "Windows":
+            self.button_Dealer_self.config(bg="SystemButtonFace")
+            self.button_Dealer_kamicha.config(bg="SystemButtonFace")
+            self.button_Dealer_toimen.config(bg="SystemButtonFace")
+            self.button_Dealer_shimocha.config(bg="red")
+        else:
+            self.button_Dealer_self.config(highlightbackground="SystemButtonFace")
+            self.button_Dealer_kamicha.config(highlightbackground="SystemButtonFace")
+            self.button_Dealer_toimen.config(highlightbackground="SystemButtonFace")
+            self.button_Dealer_shimocha.config(highlightbackground="red")
 
     def calculate(self):
-        self.button_calculate.config(highlightbackground="red")
-        self.root.after(100, lambda: self.button_calculate.config(highlightbackground="SystemButtonFace"))
+        if self.OS == "Windows":
+            self.button_calculate.config(bg="red")
+            self.root.after(100, lambda: self.button_calculate.config(bg="SystemButtonFace"))
+        else:
+            self.button_calculate.config(highlightbackground="red")
+            self.root.after(100, lambda: self.button_calculate.config(highlightbackground="SystemButtonFace"))
 
         score_self = self.get_score(self.text_self)
         score_kamicha = self.get_score(self.text_kamicha)
@@ -168,8 +197,6 @@ class interface:
 
         self.root.mainloop()
 
-
-
     def exec_Windows(self):
         self.root.title("Mahjong Tool")
         self.root.geometry("400x500")
@@ -229,6 +256,7 @@ class interface:
         self.text_honba_count.place(x=360, y=150)
         self.button_calculate.place(x=120, y=250)
         self.label_output.place(x=20, y=320)
+
         self.root.mainloop()
         pass
 
