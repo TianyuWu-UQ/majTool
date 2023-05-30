@@ -1,7 +1,7 @@
 import tkinter as tk
 import platform
 from calculation import calculation
-
+from changeScore import changeScore
 
 class interface:
     def __init__(self):
@@ -32,6 +32,7 @@ class interface:
         self.button_calculate = tk.Button(self.root, text="计算", command=self.calculate)
         font_output = ("Helvetica", 16)
         self.label_output = tk.Label(self.root, text="输入场况")
+        self.button_change_score = tk.Button(self.root, text="得失", command=self.change_score)
 
     def click_isDealer_self(self):
         self.isDealer = 0
@@ -109,6 +110,32 @@ class interface:
         except Exception as e:
             self.label_output.config(text=str(e))
 
+    def change_score(self):
+        if self.OS == "Windows":
+            self.button_change_score.config(bg="red")
+            self.root.after(100, lambda: self.button_change_score.config(bg="SystemButtonFace"))
+        else:
+            self.button_change_score.config(highlightbackground="red")
+            self.root.after(100, lambda: self.button_change_score.config(highlightbackground="SystemButtonFace"))
+
+        score_self = self.get_score(self.text_self)
+        score_kamicha = self.get_score(self.text_kamicha)
+        score_toimen = self.get_score(self.text_toimen)
+        score_shimocha = self.get_score(self.text_shimocha)
+        reach_bar_count = self.get_extra(self.text_reach_bar_count)
+        honba_count = self.get_extra(self.text_honba_count)
+
+        try:
+            cal = calculation(score_self, score_kamicha, score_toimen, score_shimocha, reach_bar_count, honba_count,
+                              self.isDealer)
+
+            window_change = changeScore(self.root, cal)
+            window_change.excu_changeScore()
+        except Exception as e:
+            self.label_output.config(text=str(e))
+
+
+
     def focus_next_widget(self, event):
         event.widget.tk_focusNext().focus()
         return "break"
@@ -169,6 +196,7 @@ class interface:
         self.button_calculate.config(font=font, width=10, height=1)
         font_output = ("Helvetica", 16)
         self.label_output.config(background="grey", width=40, height=9, font=font_output)
+        self.button_change_score.config(font=font, width=8, height=1)
 
         self.button_next_return()
 
@@ -194,6 +222,9 @@ class interface:
         self.text_honba_count.place(x=330, y=150)
         self.button_calculate.place(x=120, y=250)
         self.label_output.place(x=10, y=300)
+
+        # to create a second window to make change to scores quickly.
+        self.button_change_score.place(x=250, y=250)
 
         self.root.mainloop()
 
