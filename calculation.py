@@ -168,3 +168,8 @@ class calculation:
                         if competitor["name"] == "下家":
                             return "下家"
                 return competitor_list[0]["name"]
+
+    def __str__(self):
+        return "自家：{}\n上家：{}\n对家：{}\n下家：{}\n庄家：{}".format(self.score_self["score"], self.score_kamicha["score"],
+                                                                    self.score_toimen["score"], self.score_shimocha["score"],
+                                                                    self.isDealer)
