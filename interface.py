@@ -131,6 +131,7 @@ class interface:
 
             window_change = changeScore(self.root, cal)
             window_change.excu_changeScore()
+            print(window_change.score_change)
         except Exception as e:
             self.label_output.config(text=str(e))
 
